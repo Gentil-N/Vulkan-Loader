@@ -70,3 +70,6 @@ int main()
        return 0;
 }
 ```
+
+## Features not supported
+Functions specified for each platform ("vulkan_android.h" for example) are not supported yet. The same for "vulkan_beta.h".

@@ -3,7 +3,7 @@
 
 #ifdef VULKAN_H_
 #ifndef VK_NO_PROTOTYPES
-#error "To use a dynamic loader, yout must define \"VK_NO_PROTOTYPES\" before include the main vulkan header"
+#error "To use a dynamic loader, yout must define VK_NO_PROTOTYPES before include the main vulkan header"
 #endif //!VK_NO_PROTOTYPES
 #else
 #define VK_NO_PROTOTYPES

@@ -8,11 +8,11 @@ Just copy the two files in your project.
 
 ## How to use
 Inculde "vulkan_loader.h" in required sources files :
-```
+```cpp
 #include "vulkan_loader.h"
 ```
 Or :
-```
+```cpp
 #define VK_NO_PROTOTYPES
 #include "vulkan/vulkan.h"
 #include "vulkan_loader.h"
@@ -23,7 +23,7 @@ There are three Tables.
  - The "device" table : Loaded for each device created by instance.
 
 ## Example
-```
+```cpp
 #include <iostream>
 #include "vulkan_loader.h"
 

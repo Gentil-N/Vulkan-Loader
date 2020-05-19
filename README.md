@@ -7,7 +7,7 @@ Just copy the two files in your project.
 - (Other platforms are not supported)
 
 ## How to use
-Inculde "vulkan_loader.h" in required sources files :
+Include "vulkan_loader.h" in required sources files :
 ```cpp
 #include "vulkan_loader.h"
 ```

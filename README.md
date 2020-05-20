@@ -2,9 +2,10 @@
 Load vulkan dynamically.
 
 ## How to install
-Just copy the two files in your project.
+Just copy the two files in your project. (vulkan must be in your include path)
 - Linux : Add "dl" as dynamic library before compilation.
-- (Other platforms are not supported)
+- Windows : Add "Kernel.lib" as dependency (default in visual studio)
+-(Other platforms not supported)
 
 ## How to use
 Include "vulkan_loader.h" in required sources files :

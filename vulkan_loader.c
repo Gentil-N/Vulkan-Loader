@@ -3,9 +3,12 @@
 #if defined(__linux__) && !defined(__ANDROID__)
 #define VK_LOADER_LINUX
 #include <dlfcn.h>
+#elif defined(_WIN32)
+#define VK_LOADER_WINDOWS
+#include <Windows.h>
 #else
 #error "Platform not supported"
-#endif //__linux__ && !__ANDROID__
+#endif //Platform
 
 VkResult vklInitVulkan(VklMasterTable *table)
 {
@@ -20,11 +23,21 @@ VkResult vklInitVulkan(VklMasterTable *table)
               return VK_ERROR_INITIALIZATION_FAILED;
        }
        table->vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)dlsym(handler, "vkGetInstanceProcAddr");
+#endif //VK_LOADER_LINUX
+
+#ifdef VK_LOADER_WINDOWS
+       HMODULE handler = LoadLibrary("vulkan-1.dll");
+       if (handler == NULL)
+       {
+              return VK_ERROR_INITIALIZATION_FAILED;
+       }
+       table->vkGetInstanceProcAddr = (PFN_vkGetInstanceProcAddr)GetProcAddress(handler, "vkGetInstanceProcAddr");
+#endif //VK_LOADER_WINDOWS
+
        if (table->vkGetInstanceProcAddr == NULL)
        {
               return VK_ERROR_INITIALIZATION_FAILED;
        }
-#endif //VK_LOADER_LINUX
 
 #ifdef VK_VERSION_1_0
        table->vkCreateInstance = (PFN_vkCreateInstance)table->vkGetInstanceProcAddr(NULL, "vkCreateInstance");

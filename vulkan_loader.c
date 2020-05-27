@@ -55,6 +55,7 @@ void vklLoadInstanceTable(VkInstance instance, VklMasterTable *master_table, Vkl
 {
        PFN_vkGetInstanceProcAddr load = master_table->vkGetInstanceProcAddr;
 #ifdef VK_VERSION_1_0
+       instance_table->vkGetDeviceProcAddr = (PFN_vkGetDeviceProcAddr)load(instance, "vkGetDeviceProcAddr");
        instance_table->vkDestroyInstance = (PFN_vkDestroyInstance)load(instance, "vkDestroyInstance");
        instance_table->vkEnumeratePhysicalDevices = (PFN_vkEnumeratePhysicalDevices)load(instance, "vkEnumeratePhysicalDevices");
        instance_table->vkGetPhysicalDeviceFeatures = (PFN_vkGetPhysicalDeviceFeatures)load(instance, "vkGetPhysicalDeviceFeatures");
